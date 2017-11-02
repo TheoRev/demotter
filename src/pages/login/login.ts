@@ -36,7 +36,7 @@ export class LoginPage {
       setTimeout(() => {
         loading.dismiss();
         this.navCtrl.push(TabsPage);
-      }, 5000);
+      }, 3000);
     } else {
       let alert = this.alertCtrl.create({
         title: "Login",
