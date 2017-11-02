@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Profile } from '../../commons/profile';
+import { twitt } from '../../commons/twitt';
 
 @Component({
   selector: 'page-profile',
@@ -7,7 +9,7 @@ import { NavController } from 'ionic-angular';
 })
 export class ProfilePage {
 
-  me: Me = {
+  me: Profile = {
     "img": 'https://pbs.twimg.com/profile_images/807699331633598464/A_9pIQ6d.jpg',
     nick_name: '@jorgeucano',
     "interactions": 1,
@@ -33,20 +35,4 @@ export class ProfilePage {
     this.me.interactions = this.listado.length;
   }
 
-}
-
-interface Me {
-  img: string;
-  nick_name: string;
-  interactions: number;
-  github: string;
-  twitter: string;
-  medium: string;
-  bio: string;
-}
-
-interface twitt {
-  img: string;
-  nick_name: string;
-  text: string;
 }

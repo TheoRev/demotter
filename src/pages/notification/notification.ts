@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Notifications } from '../../commons/notifications';
 
 @Component({
   selector: "page-notification",
@@ -31,11 +32,4 @@ export class NotificationPage {
   ];
 
   constructor(public navCtrl: NavController) {}
-}
-
-interface Notifications {
-  img: string;
-  nick_name: string;
-  text: string;
-  action: string;
 }
