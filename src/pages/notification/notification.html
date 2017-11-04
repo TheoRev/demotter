@@ -15,7 +15,7 @@
       <h5>{{item.action}}</h5>
       <h2>{{item.nick_name}}</h2>
       <p>{{item.text}}</p>
-      <button ion-button clear item-right>ver</button>
+      <button (tap)="showNotification(item)" ion-button clear item-right>ver</button>
     </ion-item>
   </ion-list>
 </ion-content>
