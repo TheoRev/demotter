@@ -1,3 +1,4 @@
+import { UserService } from "../../services/user.service";
 import { TabsPage } from "./../tabs/tabs";
 import { Component } from "@angular/core";
 
@@ -20,7 +21,8 @@ export class LoginPage {
   constructor(
     private alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
@@ -29,18 +31,32 @@ export class LoginPage {
 
   login = (): void => {
     if (this.user.email != "" && this.user.password != "") {
+      let usuario;
       let loading = this.loadingCtrl.create({
         content: "Please wait..."
       });
       loading.present();
-      setTimeout(() => {
-        loading.dismiss();
-        this.navCtrl.push(TabsPage);
-      }, 3000);
+      let login: false;
+
+      this.userService
+        .loginUser(this.user.email, this.user.password)
+        .then(response => {
+          loading.dismiss();
+          if (response !== undefined) {
+            this.navCtrl.push(TabsPage);
+          } else {
+            let alert = this.alertCtrl.create({
+              title: "Login",
+              subTitle: "Usuario y/o contraseña invalida.",
+              buttons: ["Aceptar"]
+            });
+            alert.present();
+          }
+        });
     } else {
       let alert = this.alertCtrl.create({
         title: "Login",
-        subTitle: "Usuario y/o contraseña invalida.",
+        subTitle: "Complete los campos.",
         buttons: ["Aceptar"]
       });
       alert.present();

@@ -18,6 +18,7 @@ import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { LoginPage } from "../pages/login/login";
 import { ShowNotificationPage } from "../pages/notification/showNotification";
+import { UserService } from "../services/user.service";
 
 // refactor por router
 var links = [
@@ -55,7 +56,8 @@ export const deepLinkConfig: DeepLinkConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    UserService
   ]
 })
 export class AppModule {}
