@@ -1,9 +1,15 @@
+import { DBService } from "./db.service";
 import { Injectable } from "@angular/core";
 import { User } from "./../commons/user";
 import { USERS } from "./mocks/users";
 
 @Injectable()
 export class UserService {
+  constructor(private dbService: DBService) {
+    dbService.openDatabase();
+    dbService.createTable();
+  }
+
   getUsers(): Promise<User[]> {
     console.log("Entramos al promise");
     return Promise.resolve(USERS);

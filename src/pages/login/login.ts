@@ -1,6 +1,7 @@
 import { UserService } from "../../services/user.service";
 import { TabsPage } from "./../tabs/tabs";
 import { Component } from "@angular/core";
+import { DBService } from "../../services/db.service";
 
 import {
   AlertController,
@@ -22,8 +23,13 @@ export class LoginPage {
     private alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
-    private userService: UserService
-  ) {}
+    private userService: UserService,
+    private dbService: DBService
+  ) {
+    dbService.openDatabase();
+    dbService.createTable();
+    console.log(dbService.getAll());
+  }
 
   ngOnInit() {
     console.log("Arrancó el init");
